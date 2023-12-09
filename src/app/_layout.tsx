@@ -1,5 +1,4 @@
-import { useEffect } from 'react';
-import { SCREENS } from './screens';
+import React, { useEffect } from 'react';
 
 import * as SplashScreen from 'expo-splash-screen';
 import { Stack } from 'expo-router';
@@ -39,6 +38,7 @@ export default function RootLayout() {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <Stack
         screenOptions={{
+          headerBackTitleVisible: false,
           headerTitle: 'DEVember',
           headerTitleStyle: {
             fontFamily: 'AmaticSC_700Bold',
