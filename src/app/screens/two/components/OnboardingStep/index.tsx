@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Container, Step } from './styles';
-
+import { ZoomIn } from 'react-native-reanimated';
 interface OnboardingStepProps {
   currentStep: number;
   totalSteps: number;
@@ -14,8 +14,8 @@ export const OnboardingStep: React.FC<OnboardingStepProps> = ({
   return (
     <Container>
       {[...Array(totalSteps)].map((_, index) => {
-        console.log(index, currentStep);
-        return <Step key={index} active={index === currentStep} />;
+        const isActive = index === currentStep;
+        return <Step key={index} active={isActive} />;
       })}
     </Container>
   );

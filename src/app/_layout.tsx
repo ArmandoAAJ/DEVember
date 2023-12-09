@@ -15,8 +15,7 @@ import {
   Inter_700Bold,
   Inter_400Regular,
 } from '@expo-google-fonts/inter';
-
-const { ScreenOne } = SCREENS;
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -37,16 +36,18 @@ export default function RootLayout() {
   if (!fontsLoaded && !fontError) return null;
 
   return (
-    <Stack
-      screenOptions={{
-        headerTitle: 'DEVember',
-        headerTitleStyle: {
-          fontFamily: 'AmaticSC_700Bold',
-          fontSize: 22,
-        },
-      }}
-    >
-      <Stack.Screen name="index" />
-    </Stack>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <Stack
+        screenOptions={{
+          headerTitle: 'DEVember',
+          headerTitleStyle: {
+            fontFamily: 'AmaticSC_700Bold',
+            fontSize: 22,
+          },
+        }}
+      >
+        <Stack.Screen name="index" />
+      </Stack>
+    </GestureHandlerRootView>
   );
 }

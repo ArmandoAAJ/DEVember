@@ -8,6 +8,11 @@ import { OnboardingInfo } from '../OnboardingInfo';
 import { OnboardingButton } from '../OnboardingButton';
 import { router } from 'expo-router';
 import { OnboardingStep } from '../OnboardingStep';
+import {
+  Directions,
+  Gesture,
+  GestureDetector,
+} from 'react-native-gesture-handler';
 
 const { ONBOARDING_STEPS } = CONSTANTS;
 
@@ -40,19 +45,26 @@ export const Onboarding: React.FC = () => {
     router.back();
   };
 
+  const swipes = Gesture.Simultaneous(
+    Gesture.Fling().direction(Directions.LEFT).onEnd(onContinue),
+    Gesture.Fling().direction(Directions.RIGHT).onEnd(onBack)
+  );
+
   return (
-    <Container key={screenIndex}>
-      <Content>
-        <OnboardingStep
-          currentStep={screenIndex}
-          totalSteps={ONBOARDING_STEPS.length}
-        />
-        <OnboardingImage name={icon} />
-      </Content>
-      <Content>
-        <OnboardingInfo subTitle={description} title={title} />
-        <OnboardingButton handleContinue={onContinue} handleSkip={onBack} />
-      </Content>
-    </Container>
+    <GestureDetector gesture={swipes}>
+      <Container key={screenIndex}>
+        <Content>
+          <OnboardingStep
+            currentStep={screenIndex}
+            totalSteps={ONBOARDING_STEPS.length}
+          />
+          <OnboardingImage name={icon} />
+        </Content>
+        <Content>
+          <OnboardingInfo subTitle={description} title={title} />
+          <OnboardingButton handleContinue={onContinue} handleSkip={onBack} />
+        </Content>
+      </Container>
+    </GestureDetector>
   );
 };
