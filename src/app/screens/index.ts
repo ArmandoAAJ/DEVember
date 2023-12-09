@@ -1,4 +1,4 @@
-import { ScreenOne } from '@screens/one';
+import ScreenOne from '@screens/one';
 
 export const SCREENS = {
   ScreenOne,
