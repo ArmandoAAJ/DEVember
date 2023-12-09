@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { SCREENS } from './(screens)';
+import { SCREENS } from './screens';
 
 import * as SplashScreen from 'expo-splash-screen';
 import { Stack } from 'expo-router';
@@ -26,7 +26,15 @@ export default function RootLayout() {
   if (!fontsLoaded && !fontError) return null;
 
   return (
-    <Stack>
+    <Stack
+      screenOptions={{
+        headerTitle: 'DEVember',
+        headerTitleStyle: {
+          fontFamily: 'AmaticSC_700Bold',
+          fontSize: 22,
+        },
+      }}
+    >
       <Stack.Screen name="index" />
     </Stack>
   );

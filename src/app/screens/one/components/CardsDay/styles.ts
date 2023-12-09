@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 
 const { scale } = Dimensions.get('window');
 
-export const Container = styled.View`
+export const Container = styled.Pressable`
   width: 48%;
   height: 150px;
   border-radius: 10px;

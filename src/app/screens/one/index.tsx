@@ -7,7 +7,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const { CardsDay } = COMPONENTS;
 
-export const ScreenOne: React.FC = () => {
+const ScreenOne: React.FC = () => {
   const { bottom } = useSafeAreaInsets();
   return (
     <List
@@ -22,3 +22,5 @@ export const ScreenOne: React.FC = () => {
     />
   );
 };
+
+export default ScreenOne;
