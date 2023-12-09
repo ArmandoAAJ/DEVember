@@ -4,10 +4,17 @@ import { SCREENS } from './screens';
 import * as SplashScreen from 'expo-splash-screen';
 import { Stack } from 'expo-router';
 import {
-  useFonts,
   AmaticSC_400Regular,
   AmaticSC_700Bold,
 } from '@expo-google-fonts/amatic-sc';
+
+import {
+  useFonts,
+  Inter_900Black,
+  Inter_600SemiBold,
+  Inter_700Bold,
+  Inter_400Regular,
+} from '@expo-google-fonts/inter';
 
 const { ScreenOne } = SCREENS;
 
@@ -17,6 +24,10 @@ export default function RootLayout() {
   const [fontsLoaded, fontError] = useFonts({
     AmaticSC_400Regular,
     AmaticSC_700Bold,
+    Inter_900Black,
+    Inter_600SemiBold,
+    Inter_700Bold,
+    Inter_400Regular,
   });
 
   useEffect(() => {
