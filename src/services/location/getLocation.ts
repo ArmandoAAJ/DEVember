@@ -16,7 +16,7 @@ export async function getLocation() {
     accuracy: Location.Accuracy.BestForNavigation,
   });
 
-  if (coords?.latitude || coords?.longitude) return;
+  if (!coords?.latitude || !coords?.longitude) return;
 
   return {
     latitude: coords.latitude,
@@ -24,25 +24,23 @@ export async function getLocation() {
   };
 }
 
-function generateRandonPosition({
-  latitudeOriginal,
-  longitudeOriginal,
-  deslocamentoMaximo,
+const generateRandomPosition = ({
+  lat,
+  long,
+  max,
 }: {
-  latitudeOriginal: number;
-  longitudeOriginal: number;
-  deslocamentoMaximo: number;
-}) {
-  // Gerar deslocamentos aleatórios
-  const deslocLat = Math.random() * 2 * deslocamentoMaximo - deslocamentoMaximo;
-  const deslocLon = Math.random() * 2 * deslocamentoMaximo - deslocamentoMaximo;
+  lat: number;
+  long: number;
+  max: number;
+}) => {
+  const randomLat = ((Math.random() * 2 - 1) * max) / 1000;
+  const randomLon = ((Math.random() * 2 - 1) * max) / 1000;
 
-  // Calcular novas coordenadas
-  const novaLatitude = latitudeOriginal + deslocLat;
-  const novaLongitude = longitudeOriginal + deslocLon;
+  const latitude = Number((lat + randomLat).toFixed(7));
+  const longitude = Number((long + randomLon).toFixed(7));
 
-  return { novaLatitude, novaLongitude };
-}
+  return { latitude, longitude };
+};
 
 export const generateRandonLocation = async () => {
   if (LOCATIONS_DAY_5?.length > 0) return LOCATIONS_DAY_5;
@@ -57,11 +55,17 @@ export const generateRandonLocation = async () => {
 
   const { latitude, longitude } = coords;
 
-  const userRegions = MOCK.map((item) => {
-    const randomLatitude = generateRandonPosition({
-      latitudeOriginal: latitude,
-      longitudeOriginal: longitude,
-      deslocamentoMaximo: 0.02,
+  const userRegions = MOCK.map((item, index) => {
+    if (index === 0)
+      return {
+        ...item,
+        latitude,
+        longitude,
+      };
+    const randomLatitude = generateRandomPosition({
+      lat: latitude,
+      long: longitude,
+      max: 5,
     });
     return {
       ...item,

@@ -16,7 +16,7 @@ const { Controlls } = COMPONENTS;
 interface ScreenFourProps extends AnimatedLottieViewProps {
   controls?: boolean;
   stackActive?: boolean;
-  onFinish?: () => void;
+  onFinish?: (isCancelled: boolean) => void;
 }
 
 const ScreenFour: React.FC<ScreenFourProps> = ({

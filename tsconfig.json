@@ -7,7 +7,8 @@
       "@/*": ["src/*"],
       "@screens/*": ["src/app/screens/*"],
       "@assets/*": ["/assets/*"],
-      "@components/*": ["/components/*"]
+      "@components/*": ["/components/*"],
+      "@services/*": ["/services/index/*"]
     }
   }
 }

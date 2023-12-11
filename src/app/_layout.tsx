@@ -21,8 +21,6 @@ const animatedLottieView = require('@assets/lottie/netflix.json');
 
 const { ScreenFour } = SCREENS;
 
-let count = 0;
-
 export default function RootLayout() {
   const [appReady, setAppReady] = useState(false);
   const [splashAnimationFinished, setSplashAnimationFinished] = useState(false);
@@ -44,8 +42,6 @@ export default function RootLayout() {
 
   const showAnimatedSplash = !appReady || !splashAnimationFinished;
 
-  console.log('showAnimatedSplash', count);
-
   if (showAnimatedSplash) {
     return (
       <ScreenFour
@@ -53,11 +49,8 @@ export default function RootLayout() {
         controls={false}
         loop={false}
         stackActive={false}
-        onFinish={() => {
-          if (count < 2) {
-            count += 1;
-            return;
-          }
+        onFinish={(isCancelled) => {
+          if (isCancelled) return;
           setSplashAnimationFinished(true);
         }}
       />
