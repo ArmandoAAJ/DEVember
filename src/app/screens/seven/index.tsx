@@ -1,9 +1,11 @@
 import React from 'react';
 
-import { Container } from './styles';
+import { COMPONENTS } from './components';
+
+const { AVWrapper } = COMPONENTS;
 
 const ScreenSeven: React.FC = () => {
-  return <Container />;
+  return <AVWrapper />;
 };
 
 export default ScreenSeven;
