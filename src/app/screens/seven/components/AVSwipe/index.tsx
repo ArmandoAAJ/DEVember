@@ -4,6 +4,8 @@ import { Container, Content, Circle, Text, Icon } from './styles';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import {
+  FadeIn,
+  FadeInDown,
   FadeOut,
   interpolate,
   interpolateColor,

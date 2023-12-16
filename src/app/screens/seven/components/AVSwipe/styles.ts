@@ -6,7 +6,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 
 const { SWIPE_SIZE, PADDING, CIRCLE_SIZE } = CONSTANTS;
 
-export const Container = styled.View`
+export const Container = styled(Animated.View)`
   width: 100%;
   height: 30%;
   position: absolute;

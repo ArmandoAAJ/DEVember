@@ -3,7 +3,7 @@ import { Dimensions } from 'react-native';
 const { width } = Dimensions.get('window');
 
 const SWIPE_SIZE = width * 0.9;
-const PADDING = 5;
+const PADDING = 10;
 const CIRCLE_SIZE = 50;
 const END_POSITION = SWIPE_SIZE - PADDING * 2 - CIRCLE_SIZE;
 
