@@ -9,6 +9,7 @@ enum EnumDays {
   'six',
   'seven',
   'eight',
+  'nine',
 }
 
 export const CONSTANTS = {
