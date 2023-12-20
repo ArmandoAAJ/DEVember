@@ -16,6 +16,8 @@ import {
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SCREENS } from '@screens/index';
 import Animated, { BounceInRight } from 'react-native-reanimated';
+import { QueryClientProvider } from 'react-query';
+import { QUERY_CLIENT } from '@/services/react-query';
 
 const animatedLottieView = require('@assets/lottie/netflix.json');
 
@@ -59,19 +61,21 @@ export default function RootLayout() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <Animated.View style={{ flex: 1 }} entering={BounceInRight}>
-        <Stack
-          initialRouteName="index"
-          screenOptions={{
-            headerBackTitleVisible: false,
-            headerTitle: 'DEVember',
-            headerTitleStyle: {
-              fontFamily: 'AmaticSC_700Bold',
-              fontSize: 22,
-            },
-          }}
-        />
-      </Animated.View>
+      <QueryClientProvider client={QUERY_CLIENT}>
+        <Animated.View style={{ flex: 1 }} entering={BounceInRight}>
+          <Stack
+            initialRouteName="index"
+            screenOptions={{
+              headerBackTitleVisible: false,
+              headerTitle: 'DEVember',
+              headerTitleStyle: {
+                fontFamily: 'AmaticSC_700Bold',
+                fontSize: 22,
+              },
+            }}
+          />
+        </Animated.View>
+      </QueryClientProvider>
     </GestureHandlerRootView>
   );
 }
